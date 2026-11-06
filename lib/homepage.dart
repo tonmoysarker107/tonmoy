@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import 'card_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,32 +9,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home page"),
-        backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-        foregroundColor: const Color.fromARGB(255, 237, 233, 233),
-
+        title: Text("HomePage"),
+        backgroundColor: Colors.greenAccent,
+        foregroundColor: Colors.white,
+        // leading: Icon(Icons.home),
         actions: [
-          IconButton(
-            onPressed: () {},
-            tooltip: "Search",
-            icon: Icon(Icons.search),
-          ),
-
-          IconButton(
-            onPressed: () {},
-            tooltip: "Settings",
-            icon: Icon(Icons.settings),
-          ),
-          // Container(
-          //   height: 40, //can make large container . suitable for column
-          //   width: 40,
-          //   margin: EdgeInsets.all(20),
-          //   padding: EdgeInsets.all(10),
-          //   decoration: BoxDecoration(
-          //     color: const Color.fromARGB(255, 115, 150, 160),
-          //     borderRadius: BorderRadius.circular(20),
-          //   ),
-          // ),
+          IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+          IconButton(onPressed: () {}, icon: Icon(Icons.person)),
         ],
       ),
 
@@ -41,174 +23,120 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             UserAccountsDrawerHeader(
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 12, 89, 110),
-              ),
+              decoration: BoxDecoration(color: Colors.greenAccent),
               accountName: Text("Tonmoy Sarker"),
               accountEmail: Text("tonmoysarker@gmail.com"),
-              currentAccountPicture: Icon(
-                Icons.person,
-                size: 50,
-                color: Colors.white,
-              ),
+              currentAccountPicture: Icon(Icons.person),
             ),
 
             ListTile(
               leading: Icon(Icons.home),
-              title: Text("Home"),
+              title: Text("HomePage"),
+              hoverColor: Colors.greenAccent,
               onTap: () {},
             ),
-
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.card_giftcard),
+              title: Text("CardPage"),
+              hoverColor: Colors.greenAccent,
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CardPage()),
+                );
+              },
+            ),
+            Divider(),
+            ListTile(
+              leading: Icon(Icons.contact_page),
+              title: Text("Contact"),
+              hoverColor: Colors.greenAccent,
+              onTap: () {},
+            ),
             Divider(),
 
-            ListTile(
-              leading: Icon(Icons.contacts),
-              title: Text("Contact"),
-              onTap: () {},
-            ),
-
             Spacer(),
-
             ListTile(
-              leading: Icon(Icons.person),
-              trailing: IconButton(onPressed: () {}, icon: Icon(Icons.person)),
+              leading: IconButton(onPressed: () {}, icon: Icon(Icons.person)),
+              trailing: IconButton(onPressed: () {}, icon: Icon(Icons.logout)),
               title: Text("Profile"),
-              onTap: () {},
             ),
           ],
         ),
       ),
 
-      backgroundColor: const Color.fromARGB(255, 8, 178, 235),
-
-      body: Column(
-        children: [
-          SizedBox(height: 20),
-          // can use diffeent widget
-          Center(
-            //raw or colum
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              //crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                TextButton(
-                  onPressed: () {},
-                  style: TextButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 115, 150, 160),
-                    foregroundColor: Colors.white,
-                    side: BorderSide(color: Colors.white),
-                    fixedSize: Size(110, 40),
-                  ),
-                  child: Text("Text Button"),
+      body: Center(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CardPage()),
+                  );
+                },
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.greenAccent,
+                  foregroundColor: Colors.white,
+                  side: BorderSide(color: Colors.pinkAccent),
+                  fixedSize: Size(100, 30),
+                  elevation: 5,
+                  shadowColor: Colors.amber,
                 ),
-
-                SizedBox(height: 8),
-
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 115, 150, 160),
-                    foregroundColor: Colors.white,
-                    side: BorderSide(color: Colors.white),
-                  ),
-                  child: Text("Elevated Button"),
-                ),
-
-                SizedBox(height: 8),
-
-                OutlinedButton(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 170, 195, 201),
-                    foregroundColor: const Color.fromARGB(255, 60, 80, 85),
-                    side: BorderSide(
-                      color: const Color.fromARGB(255, 239, 243, 244),
-                    ),
-                  ),
-                  child: Text("Outlined Button"),
-                ),
-
-                SizedBox(height: 8),
-
-                IconButton(
-                  onPressed: () {},
-                  tooltip: "Icon Button",
-                  style: IconButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 115, 150, 160),
-                    foregroundColor: Colors.white,
-                    side: BorderSide(color: Colors.white),
-                    fixedSize: Size(150, 40),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  icon: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.touch_app),
-                      SizedBox(width: 4),
-                      Text("Icon Button"),
-                    ],
-                  ),
-                ),
-
-                //experiment
-                Container(
-                  height: 300,
-                  width: 300,
-                  margin: const EdgeInsets.all(20),
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(255, 115, 150, 160),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Center(
-                    child: MouseRegion(
-                      cursor: SystemMouseCursors.click,
-                      child: Text(
-                        'Hello Flutter',
-                        style: GoogleFonts.aleo(
-                          textStyle: const TextStyle(
-                            fontSize: 36,
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 60, 80, 85),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+                child: Text("Text Button"),
+              ),
             ),
-          ),
-
-          // Expanded(
-          //   child: Center(
-          //     child: MouseRegion(
-          //       cursor: SystemMouseCursors.click,
-          //       child: Text(
-          //         "Hello Flutter",
-          //         style: GoogleFonts.aleo(
-          //           textStyle: TextStyle(
-          //             fontSize: 45,
-          //             fontWeight: FontWeight.bold,
-          //             color: const Color.fromARGB(255, 60, 80, 85),
-          //           ),
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          // ),
-        ],
+            ElevatedButton(
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text("Elevated Button Pressed")),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.greenAccent,
+                foregroundColor: Colors.white,
+                side: BorderSide(color: Colors.pinkAccent),
+                fixedSize: Size(150, 30),
+              ),
+              child: Text("Elevated Button"),
+            ),
+            SizedBox(height: 10),
+            OutlinedButton(onPressed: () {}, child: Text("Outlined Button")),
+            // IconButton(onPressed: () {}, icon: Icon(Icons.login)),
+            Container(
+              height: 300,
+              width: 300,
+              margin: EdgeInsets.all(20),
+              padding: EdgeInsets.all(20),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Colors.greenAccent,
+                border: Border.all(color: Colors.red, width: 5),
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                // shape: BoxShape.circle,
+                gradient: LinearGradient(
+                  colors: [Colors.green, Colors.greenAccent],
+                ),
+              ),
+              child: Text("Welcome Container"),
+            ),
+          ],
+        ),
       ),
 
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {},
-      //   tooltip: "Add",
-      //   backgroundColor: const Color.fromARGB(255, 115, 150, 160),
-      //   foregroundColor: Colors.white,
-      //   child: Icon(Icons.add),
-      // ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.greenAccent,
+        foregroundColor: Colors.white,
+        hoverColor: const Color.fromARGB(255, 107, 175, 109),
+        shape: BeveledRectangleBorder(),
+        tooltip: "Add",
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
